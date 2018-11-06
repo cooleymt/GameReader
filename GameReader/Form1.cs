@@ -107,11 +107,27 @@ namespace GameReader
                 {
                     GetCursorPos(out topPoint);
                     Speak("Top Left Captured");
+                    if (botPoint.X < topPoint.X && botPoint.Y < topPoint.Y)
+                    {
+                        botPoint.X = topPoint.X + 1;
+                        botPoint.Y = topPoint.Y + 1;
+                        Speak("Your bottom right point has been reset");
+                    }
                 }
                 else if (id == hotBotID)
                 {
-                    GetCursorPos(out botPoint);
-                    Speak("Bottom Right Captured");
+                    POINT tempPoint;
+
+                    GetCursorPos(out tempPoint);
+                    if(tempPoint.X > topPoint.X && tempPoint.Y > topPoint.Y)
+                    {
+                        topPoint = tempPoint;
+                        Speak("Bottom Right Captured");
+                    }
+                    else
+                    {
+                        Speak("Your second point is above or left of your first point");
+                    }
                 }
                 
 
