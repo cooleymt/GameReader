@@ -33,11 +33,8 @@ namespace GameReader
             this.rateNum = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TestBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.volumeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rateNum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // foundText
@@ -85,7 +82,7 @@ namespace GameReader
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 65);
             this.label1.Name = "label1";
@@ -103,45 +100,22 @@ namespace GameReader
             this.label2.TabIndex = 7;
             this.label2.Text = "Rate";
             // 
-            // TestBtn
-            // 
-            this.TestBtn.Location = new System.Drawing.Point(255, 319);
-            this.TestBtn.Name = "TestBtn";
-            this.TestBtn.Size = new System.Drawing.Size(75, 23);
-            this.TestBtn.TabIndex = 8;
-            this.TestBtn.Text = "button1";
-            this.TestBtn.UseVisualStyleBackColor = true;
-            this.TestBtn.Click += new System.EventHandler(this.Crop);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(692, 408);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.TestBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rateNum);
             this.Controls.Add(this.volumeNum);
             this.Controls.Add(this.foundText);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.volumeNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rateNum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,8 +127,6 @@ namespace GameReader
         private System.Windows.Forms.NumericUpDown rateNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button TestBtn;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
