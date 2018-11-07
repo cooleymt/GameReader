@@ -33,6 +33,9 @@ namespace GameReader
             this.rateNum = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pausePlayBtn = new System.Windows.Forms.Button();
+            this.stopVoiceBtn = new System.Windows.Forms.Button();
+            this.statusLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.volumeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rateNum)).BeginInit();
             this.SuspendLayout();
@@ -100,12 +103,48 @@ namespace GameReader
             this.label2.TabIndex = 7;
             this.label2.Text = "Rate";
             // 
+            // pausePlayBtn
+            // 
+            this.pausePlayBtn.Enabled = false;
+            this.pausePlayBtn.Location = new System.Drawing.Point(181, 278);
+            this.pausePlayBtn.Name = "pausePlayBtn";
+            this.pausePlayBtn.Size = new System.Drawing.Size(75, 23);
+            this.pausePlayBtn.TabIndex = 8;
+            this.pausePlayBtn.Text = "Pause";
+            this.pausePlayBtn.UseVisualStyleBackColor = true;
+            this.pausePlayBtn.Click += new System.EventHandler(this.pausePlayBtn_Click);
+            // 
+            // stopVoiceBtn
+            // 
+            this.stopVoiceBtn.Enabled = false;
+            this.stopVoiceBtn.Location = new System.Drawing.Point(405, 278);
+            this.stopVoiceBtn.Name = "stopVoiceBtn";
+            this.stopVoiceBtn.Size = new System.Drawing.Size(75, 23);
+            this.stopVoiceBtn.TabIndex = 10;
+            this.stopVoiceBtn.Text = "Stop";
+            this.stopVoiceBtn.UseVisualStyleBackColor = true;
+            this.stopVoiceBtn.Click += new System.EventHandler(this.stopVoiceBtn_Click);
+            // 
+            // statusLbl
+            // 
+            this.statusLbl.AutoSize = true;
+            this.statusLbl.ForeColor = System.Drawing.Color.White;
+            this.statusLbl.Location = new System.Drawing.Point(301, 9);
+            this.statusLbl.Name = "statusLbl";
+            this.statusLbl.Size = new System.Drawing.Size(52, 13);
+            this.statusLbl.TabIndex = 11;
+            this.statusLbl.Text = "Initializing";
+            this.statusLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(692, 408);
+            this.Controls.Add(this.statusLbl);
+            this.Controls.Add(this.stopVoiceBtn);
+            this.Controls.Add(this.pausePlayBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rateNum);
@@ -127,6 +166,9 @@ namespace GameReader
         private System.Windows.Forms.NumericUpDown rateNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button pausePlayBtn;
+        private System.Windows.Forms.Button stopVoiceBtn;
+        private System.Windows.Forms.Label statusLbl;
     }
 }
 

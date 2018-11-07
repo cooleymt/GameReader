@@ -58,6 +58,10 @@ namespace GameReader
         private Regex filter = new Regex(@"\s +| _ *");
         private POINT topPoint = new POINT(-1,-1);
         private POINT botPoint = new POINT(-1,-1);
+        private const int statusPause = 2;
+        private const int statusSpeaking = 1;
+        private const int statusReady = 0;
+        private int readerStatus = statusReady;
 
         public Form1()
         {
@@ -67,6 +71,29 @@ namespace GameReader
             Boolean success = Form1.RegisterHotKey(this.Handle, hotCaptureID, hotMod, captureKey);
             success = Form1.RegisterHotKey(this.Handle, hotTopID, hotMod, areaTopKey);
             success = Form1.RegisterHotKey(this.Handle, hotBotID, hotMod, areaBottomKey);
+            reader.SpeakStarted += SpeakStart;
+            reader.SpeakCompleted += SpeakFinish;
+            statusLbl.Text = "Ready";
+        }
+
+        private void SpeakStart(object sender, SpeakStartedEventArgs e)
+        {
+            statusLbl.Text = "Speaking";
+            readerStatus = statusSpeaking;
+            stopVoiceBtn.Enabled = true;
+            pausePlayBtn.Enabled = true;
+            rateNum.Enabled = false;
+            volumeNum.Enabled = false;
+        }
+
+        private void SpeakFinish(object sender, SpeakCompletedEventArgs e)
+        {
+            statusLbl.Text = "Ready";
+            readerStatus = statusReady;
+            stopVoiceBtn.Enabled = false;
+            pausePlayBtn.Enabled = false;
+            rateNum.Enabled = true;
+            volumeNum.Enabled = true;
         }
 
         private void Form1_FormClosing(object sender, EventArgs e)
@@ -139,7 +166,6 @@ namespace GameReader
         {
             reader.Volume =  (int)(decimal)volumeNum.Value;
             reader.Rate = (int)(decimal)rateNum.Value;
-
             reader.SpeakAsync(passage);
         }
 
@@ -150,7 +176,30 @@ namespace GameReader
             foundText.Text = text;
             return text;
         }
-        
+
+        private void pausePlayBtn_Click(object sender, EventArgs e)
+        {
+            if (readerStatus == statusSpeaking)
+            {
+                reader.Pause();
+                statusLbl.Text = "Paused";
+                readerStatus = statusPause;
+                pausePlayBtn.Text = "Resume";
+            }
+            else if(readerStatus == statusPause)
+            {
+                reader.Resume();
+                statusLbl.Text = "Speaking";
+                readerStatus = statusSpeaking;
+                pausePlayBtn.Text = "Pause";
+            }
+        }
+
+        private void stopVoiceBtn_Click(object sender, EventArgs e)
+        {
+            reader.SpeakAsyncCancelAll();
+        }
+
     }
 
     public class ScreenCapture
