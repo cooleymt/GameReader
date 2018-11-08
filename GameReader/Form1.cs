@@ -56,8 +56,8 @@ namespace GameReader
         private const Int32 hotBotID = 2;
         private SpeechSynthesizer reader = new SpeechSynthesizer();
         private Regex filter = new Regex(@"\s +| _ *");
-        private POINT topPoint = new POINT(-1,-1);
-        private POINT botPoint = new POINT(-1,-1);
+        private POINT topPoint = new POINT(-5000,-5000);
+        private POINT botPoint = new POINT(-5000, -5000);
         private const int statusPause = 2;
         private const int statusSpeaking = 1;
         private const int statusReady = 0;
@@ -114,7 +114,7 @@ namespace GameReader
                     Bitmap image;
                     foundText.Text = "";
                     Speak("Processing");
-                    if (topPoint.X < 0 || topPoint.Y < 0 || botPoint.X < 0 || botPoint.Y < 0)
+                    if (topPoint.X <= -5000 || topPoint.Y <= -5000 || botPoint.X <= -5000 || botPoint.Y <= -5000)
                     {
                         
                         image = ScreenCapture.CaptureActiveWindow();
@@ -125,6 +125,7 @@ namespace GameReader
                     {
                         image = ScreenCapture.CaptureArea(topPoint.X, topPoint.Y, botPoint.X, botPoint.Y);
                     }
+                    //pictureBox1.Image = image;
                     text = ReadImage(image);
                     text = filter.Replace(text, "");
                     Speak(text);
@@ -148,7 +149,7 @@ namespace GameReader
                     GetCursorPos(out tempPoint);
                     if(tempPoint.X > topPoint.X && tempPoint.Y > topPoint.Y)
                     {
-                        topPoint = tempPoint;
+                        botPoint = tempPoint;
                         Speak("Bottom Right Captured");
                     }
                     else

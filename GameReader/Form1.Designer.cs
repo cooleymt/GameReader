@@ -141,7 +141,7 @@ namespace GameReader
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(692, 408);
+            this.ClientSize = new System.Drawing.Size(585, 359);
             this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.stopVoiceBtn);
             this.Controls.Add(this.pausePlayBtn);
